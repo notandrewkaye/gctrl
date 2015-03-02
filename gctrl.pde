@@ -59,7 +59,7 @@ void draw()
   text("2: set speed to 0.010 inches (10 mil) per jog", 12, y); y += dy;
   text("3: set speed to 0.100 inches (100 mil) per jog", 12, y); y += dy;
   text("arrow keys: jog in x-y plane", 12, y); y += dy;
-  text("page up & page down: jog in z axis", 12, y); y += dy;
+  text("u: jog z axis up & d: jog z axis down", 12, y); y += dy;
   text("$: display grbl settings", 12, y); y+= dy;
   text("h: go home", 12, y); y += dy;
   text("0: zero machine (set home to the current location)", 12, y); y += dy;
@@ -81,8 +81,8 @@ void keyPressed()
     if (keyCode == RIGHT) port.write("G91\nG20\nG00 X" + speed + " Y0.000 Z0.000\n");
     if (keyCode == UP) port.write("G91\nG20\nG00 X0.000 Y" + speed + " Z0.000\n");
     if (keyCode == DOWN) port.write("G91\nG20\nG00 X0.000 Y-" + speed + " Z0.000\n");
-    if (keyCode == KeyEvent.VK_PAGE_UP) port.write("G91\nG20\nG00 X0.000 Y0.000 Z" + speed + "\n");
-    if (keyCode == KeyEvent.VK_PAGE_DOWN) port.write("G91\nG20\nG00 X0.000 Y0.000 Z-" + speed + "\n");
+    if (key == 'u') port.write("G91\nG20\nG00 X0.000 Y0.000 Z" + speed + "\n");
+    if (key == 'd') port.write("G91\nG20\nG00 X0.000 Y0.000 Z-" + speed + "\n");
     if (key == 'h') port.write("G90\nG20\nG00 X0.000 Y0.000 Z0.000\n");
     if (key == 'v') port.write("$0=75\n$1=74\n$2=75\n");
     //if (key == 'v') port.write("$0=100\n$1=74\n$2=75\n");
