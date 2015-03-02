@@ -46,6 +46,9 @@ void setup()
 {
   size(500, 250);
   openSerialPort();
+  
+  // List all the available serial ports
+  println(Serial.list());
 }
 
 void draw()
